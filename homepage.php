@@ -13,7 +13,7 @@ include("connect.php");
     <meta name="viewport" 
           content="width=device-width, 
                    initial-scale=1.0">
-    <title>GeeksForGeeks</title>
+    <title>Employee Reviews </title>
           <style>@import url(
             "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
             
@@ -83,14 +83,15 @@ include("connect.php");
             }
             
             .searchbar input {
-              width: 250px;
+              width: 950px;
               height: 42px;
               border-radius: 50px 0 0 50px;
               background-color: var(--background-color3);
               padding: 0 20px;
               font-size: 15px;
               outline: none;
-              border: none;
+	      border: none;
+		
             }
             .searchbtn {
               width: 50px;
@@ -100,7 +101,8 @@ include("connect.php");
               justify-content: center;
               border-radius: 0px 50px 50px 0px;
               background-color: var(--secondary-color);
-              cursor: pointer;
+	      cursor: pointer;
+		margin-right:40px;
             }
             
             .message {
@@ -395,6 +397,7 @@ include("connect.php");
     }
     .searchbar {
       display: none;
+	width: 600px;
     }
     .main {
       padding: 40px 30px 30px 30px;
@@ -514,23 +517,22 @@ include("connect.php");
     <!-- for header part -->
     <header>
 
-    <div style="text-align:center; padding:15%;">
-      <p  style="font-size:50px; font-weight:bold;">
+    <div style="text-align:left; padding:15%;margin-left:-280px; ">
+      <p  style="font-size:25px; color:#3f0097; font-weight:bold;">
        Hello  <?php 
        if(isset($_SESSION['email'])){
         $email=$_SESSION['email'];
-        $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
+        $query=mysqli_query($conn, "SELECT users.* FROM users WHERE users.email='$email'");
         while($row=mysqli_fetch_array($query)){
-            echo $row['firstName'].' '.$row['lastName'];
+            echo $row['firstname'].' '.$row['lastname'];
         }
        }
        ?>
-       :)
+       
       </p>
-      <a href="logout.php">Logout</a>
     </div>
 
-        <div class="searchbar">
+        <div class="searchbar" >
             <input type="text" 
                    placeholder="Search">
             <div class="searchbtn">
@@ -609,12 +611,14 @@ include("connect.php");
                         <h3> Settings</h3>
                     </div>
 
-                    <div class="nav-option logout">
-                        <img src=
+		    <div class="nav-option option7">
+			<a href ="index.php" style="display:block;">
+                        <img style="float:left;margin-right:20px;" src=
 "https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
                             class="nav-img" 
                             alt="logout">
-                        <h3>Logout</h3>
+			<h3 style="float:left;"  >Logout</h3>
+			</a>
                     </div>
 
                 </div>
@@ -771,6 +775,9 @@ include("connect.php");
         
         menuicn.addEventListener("click", () => {
             nav.classList.toggle("navclose");
-        })</script>
+	})
+	
+	</script>
+
 </body>
 </html>

@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+    db:
+      image: mysql
+      container_name: mysqlcontainer
+      environment:
+        MYSQL_ROOT_PASSWORD: q123
+        MYSQL_DATABASE: login
+      volumes:
+        - ./sql/:/docker-entrypoint-initdb.d/
+
+    web:
+      image: apachesql
+      build: ./apache
+      container_name: apacontainer
+      ports:
+        - "80:80"
